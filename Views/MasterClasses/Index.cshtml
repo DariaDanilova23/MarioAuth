@@ -11,16 +11,32 @@
             <img class="mainPhoto" src="~/img/master/masterPhoto.png">
         </div>
     </div>
-    @foreach (var item in Model)
-    {
-        <div class="masterFlex">
+    <table>   
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <div class="masterDate">
+                        <h1> @Html.DisplayFor(modelItem => item.Date)</h1>
+                    </div>
+                </td>
+                <td class="masterInfo">
+                    <div class="masterTXT">
+                        <h1>@Html.DisplayFor(modelItem => item.Title)</h1>
+                        <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+       <!-- <div class="masterFlex">
             <div class="masterData">
-                <h1> @Html.DisplayFor(modelItem => item.Date)</h1>
+                <h1> </h1>
             </div>
             <div class="masterInfo">
-                <h1>@Html.DisplayFor(modelItem => item.Title)</h1>
-                <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                <h1></h1>
+                <p></p>
             </div>
         </div>
-    }
+         -->
 </div>
