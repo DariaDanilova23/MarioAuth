@@ -1,0 +1,114 @@
+html {
+    font-size: 14px;
+    scroll-behavior:smooth;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 96px;
+    min-width: 600px;
+    line-height: 1.6;
+    background-color: #ECF1F2;
+    /*#F5F5F5;*/
+}
+
+p {
+    color: #7B7B7B;
+    font-family: 'Gothic A1';
+}
+
+h1 {
+    color: #104241;
+    font-family: 'Poiret One';
+}
+
+header {
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.logo {
+    height: 96px;
+}
+
+.login {
+    height: 40px;
+}
+
+.nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Poiret One';
+    font-size: 18px;
+    flex-wrap: nowrap;
+}
+
+    .nav li {
+        display: inline;
+    }
+
+        .nav li a {
+            text-decoration: none;
+            color: #104241;
+        }
+
+.intro{
+    overflow: hidden;
+    width: 100%;
+}
+
+.divPhoto {
+    width: 100%
+}
+.mainPhoto {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+#pageSection {
+    margin-top: 80px;
+}
+
+.tittle {
+    text-align: center;
+    font-size: 56px;
+    margin-bottom: 10px
+}
+
+.footer {
+    min-width: 600px;
+    background-color: #f8f8f8;
+    z-index: 1;
+    text-align: center;
+}
+
+
+.footer-content {
+    margin-bottom: auto;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+}
+        .right-footer {
+            color: #104241;
+            font-family: 'Gothic A1';
+            font-size: 18px;
+        }
+
+.socialmedia {
+    height: 35px;
+}

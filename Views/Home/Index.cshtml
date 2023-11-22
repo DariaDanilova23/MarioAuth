@@ -1,0 +1,78 @@
+﻿@model IEnumerable<MarioAuth.Models.Catalog>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link rel="stylesheet" href="~/css/home.css" />
+}
+
+
+<div class="homePage">
+    <div class="intro">
+        <div class="divPhoto">
+            <img class="mainPhoto" src="~/img/home/homePhoto.png">
+        </div>
+        <div class="homeLine">
+            <div class="benefitsCollection">
+                <div class="benefit">
+                    <img src="~/img/home/100.png" />
+                    <p>натуральные<br />ингредиенты</p>
+                </div>
+                <div class="benefit">
+                    <img class="benefit" src="~/img/home/handmade.png" />
+                    <p>ручная<br />работа</p>
+                </div>
+                <div class="benefit">
+                    <img class="benefit" src="~/img/home/delivery.png" />
+                    <p>доставка по<br />Севастополю</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="circle-first">
+            <div class="circleTXT">
+                <h1>MARI’O</h1>
+                <p>
+                    Кондитерская студия Mari'O - это студия
+                    Севастополя, в которой можно наблюдать
+                    не только пирожные и торты, но и целую
+                    Философию вкусной жизни.
+                </p>
+            </div>
+            <img class="sign" src="~/img/about/sign.png">
+        </div>
+    </div>
+    <div class="categoryDiv" id="pageSection">
+        <h1 class="tittle">МЫ ПЕЧЁМ</h1>
+        <div class="categories">
+            @foreach (var item in Model)
+            {
+                <div class="itemCategory" onclick="location.href='@Url.Action("Index", "Products", new { catalogId = item.Id})'">
+                    <img src="data:image/png; base64,@Convert.ToBase64String(item.Image)" />
+                    <div class="itemName">@Html.DisplayFor(modelItem => item.Name)</div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="MapDiv" id="pageSection">
+        <h1 class="tittle">Адреса</h1>
+        <div class="locations">
+            <div class="shevchenko" id="address">
+                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aca7701eea2a5d440deb7e6c366fc60b9c73cab8e8c17ccf3e4f0f348b95f5ab4&amp;width=320&amp;height=240&amp;lang=ru_RU&amp;scroll=true"></script>
+                <p>
+                    ул. Тараса Шевченко, 49<br />
+                    с 10-00 до 20-00
+                </p>
+            </div>
+            <div class="seamall" id="address">
+                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A78badd46310fad3c146ec6dfa24ab7e5323e9e06588c63f84a7926dcc2fd7021&amp;width=320&amp;height=240&amp;lang=ru_RU&amp;scroll=true"></script>
+                <p>
+                    ТЦ "Sea Mall"<br />
+                    просп. Генерала Острякова, 260<br />
+                    2 этаж ТЖК<br />
+                    с 10-00 до 20-00
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

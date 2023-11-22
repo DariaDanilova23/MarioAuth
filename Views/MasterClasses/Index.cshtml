@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MarioAuth.Models.MasterClass>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link rel="stylesheet" href="~/css/master.css" />
+}
+<div class="masterPage">
+    <div class="intro">
+        <div class="divPhoto">
+            <img class="mainPhoto" src="~/img/master/masterPhoto.png">
+        </div>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="masterFlex">
+            <div class="masterData">
+                <h1> @Html.DisplayFor(modelItem => item.Date)</h1>
+            </div>
+            <div class="masterInfo">
+                <h1>@Html.DisplayFor(modelItem => item.Title)</h1>
+                <p>@Html.DisplayFor(modelItem => item.Description)</p>
+            </div>
+        </div>
+    }
+</div>

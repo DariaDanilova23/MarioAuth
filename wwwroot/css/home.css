@@ -1,0 +1,120 @@
+﻿body {
+}
+
+.homePage {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.divPhoto {
+    height: 350px;
+    width: 100%
+}
+
+.homeLine {
+    background-color: #91BCBF;
+    width: 100%;
+}
+
+.benefitsCollection {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly; 
+    width: 30%;
+}
+.benefit {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+    .benefit img {
+        height: 35px;
+        object-fit:contain;
+    }
+    .benefit p {
+        color: white;
+        font-size: 12px;
+        line-height: 14px;
+        text-align: center;
+        margin: 0;
+    }
+
+
+.circle-first {
+    position: absolute;
+    top: 50px;
+    width: 450px;
+    height: 450px;
+    right: -80px;
+    box-shadow: 0px 0px 70px grey;
+    background: #E2EEEE;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.circleTXT {
+    width: 50%;
+    max-height: 70%;
+}
+
+    .circleTXT p {
+        text-align: left;
+        font-size: 18px;
+        line-height: 32px;
+    }
+
+.sign {
+    height: 15%;
+}
+
+.categories {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 250px 250px 250px;
+    /*grid-auto-columns: 250px;*/
+    grid-auto-rows:300px;
+    column-gap: 30px;
+    row-gap: 45px;
+}
+
+.itemCategory {
+    display: flex;
+    justify-content: center;
+    flex-direction:column;
+}
+
+    .itemCategory img {
+        height:80%;
+        object-fit: cover;
+        border-radius: 12px 12px 0 0;
+    }
+
+.itemName {
+    height:20%;
+    background-color: #91BCBF;
+    color: white;
+    border-radius: 0 0 12px 12px;
+    font-family: 'Poiret One';
+    font-size:30px;
+    text-align:center;
+}
+.locations {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    vertical-align: middle;
+    justify-content: space-evenly;
+}
+
+#address {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align:center;
+}
