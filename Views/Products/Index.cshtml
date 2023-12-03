@@ -3,58 +3,23 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <link rel="stylesheet" href="~/css/product.css" />
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Catalog)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+<h1 class="tittle">@ViewData["catalogName"]</h1>
+<div class="productShop">
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Catalog.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+    <div class="productItem">
+            
+        <div class="containerPhoto">
+            <img class="productPhoto" src="data:image/png; base64,@Convert.ToBase64String(item.Image)" />
+            <p class="description"> @Html.DisplayFor(modelItem => item.Description)</p>
+        </div>
+                <div class="productInfo">
+            <p> @Html.DisplayFor(modelItem => item.Name)</p>
+            <p>Цена: @Html.DisplayFor(modelItem => item.Price) ₽</p>
+        </div>
+    </div>
 }
-    </tbody>
-</table>
+</div>
+

@@ -47,7 +47,7 @@
         <div class="categories">
             @foreach (var item in Model)
             {
-                <div class="itemCategory" onclick="location.href='@Url.Action("Index", "Products", new { catalogId = item.Id})'">
+                <div class="itemCategory" onclick="location.href='@Url.Action("Index", "Products", new { catalogId = item.Id, catalogName=item.Name})'">
                     <img src="data:image/png; base64,@Convert.ToBase64String(item.Image)" />
                     <div class="itemName">@Html.DisplayFor(modelItem => item.Name)</div>
                 </div>
