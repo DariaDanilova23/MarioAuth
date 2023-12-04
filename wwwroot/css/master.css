@@ -1,7 +1,21 @@
 ﻿body {
 }
+table{
+    margin:auto;
+}
+.masterInfo {
+    border-left: 1px solid;
+}
+.masterTXT {
+   margin-left:50px;
+}
+.masterDate{
+    margin-right:50px;
+}
+/*
 .masterFlex {
     display: inline-grid;
     grid-template-columns: 30% 40%;
     justify-content: center;
 }
+*/
