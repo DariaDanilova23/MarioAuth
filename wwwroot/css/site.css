@@ -44,34 +44,25 @@ header {
 }
 
 .logo {
-    height: 96px;
+    height: 60px;
 }
 
 .login {
     height: 40px;
 }
 
-.nav {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    justify-content: space-around;
-    align-items: center;
-    font-family: 'Poiret One';
-    font-size: 18px;
-    flex-wrap: nowrap;
+.navbar-nav {
+    display: flex;
+    justify-content: space-evenly;
 }
 
-    .nav li {
-        display: inline;
-    }
+.nav-link {
+    font-family: 'Poiret One';
+    color: #104241;
+    font-size: 18px;
+}
 
-        .nav li a {
-            text-decoration: none;
-            color: #104241;
-        }
-
-.intro{
+.intro {
     overflow: hidden;
     width: 100%;
 }
@@ -94,13 +85,8 @@ header {
     font-size: 56px;
     margin-bottom: 10px
 }
+/*
 
-.footer {
-    min-width: 600px;
-    background-color: #f8f8f8;
-    z-index: 1;
-    text-align: center;
-}
 
 
 .footer-content {
@@ -108,13 +94,28 @@ header {
     margin-top: auto;
     display: flex;
     justify-content: space-between;
+}*/
+.footer {
+    background-color:white;
+    min-width: 600px;
 }
-        .right-footer {
-            color: #104241;
-            font-family: 'Gothic A1';
-            font-size: 18px;
-        }
+#footer-content {
+    display:inline-flex;
+    justify-content: space-between;
+}
+.left-footer {
+    margin-left: 5%;
+    width: 20%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.right-footer {
+    color: #104241;
+    font-family: 'Gothic A1';
+    font-size: 18px;
+}
 
 .socialmedia {
+    margin: auto;
     height: 35px;
 }
