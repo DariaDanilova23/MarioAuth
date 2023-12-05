@@ -8,7 +8,6 @@
 }
 
 .divPhoto {
-    height: 350px;
     width: 100%
 }
 
@@ -16,7 +15,7 @@
     background-color: #91BCBF;
     width: 100%;
 }
-
+/*
 .benefitsCollection {
     display: flex;
     align-items: center;
@@ -40,14 +39,10 @@
         text-align: center;
         margin: 0;
     }
-
+    */
 
 .circle-first {
     position: absolute;
-    top: 50px;
-    width: 450px;
-    height: 450px;
-    right: -80px;
     box-shadow: 0px 0px 70px grey;
     background: #E2EEEE;
     border-radius: 50%;
@@ -75,16 +70,8 @@
 
 .categories {
     display: grid;
-    margin:auto;
+    margin: auto;
     justify-content: center;
-    grid-template-columns: 25vw 25vw 25vw;
-    /*grid-template-columns: 250px 250px 250px;*/
-    /*grid-auto-columns: 250px;*/
-    /*grid-auto-rows: 300px;
-     column-gap: 30px;*/
-    column-gap:3vw;
-    grid-auto-rows: 25vw;
-    /*row-gap: 45px;*/
 }
 
 .itemCategory {
@@ -94,37 +81,20 @@
 }
 
     .itemCategory img {
-        height:80%;
+        height: 80%;
         object-fit: cover;
         border-radius: 12px 12px 0 0;
     }
 
-
-@media (min-width: 600px) and (max-width: 699px) {
-    .itemName {
-        font-size: 18px;
-    }
-}
-
-@media (min-width: 500px) and (max-width: 599px) {
-    .itemName {
-        font-size: 14px;
-    }
-}
-/*screen and*/
-@media (min-width: 300px) and (max-width: 499px) {
-    .itemName {
-        font-size: 8px;
-    }
-}
 .itemName {
-    height:20%;
+    height: 20%;
     background-color: #91BCBF;
     color: white;
     border-radius: 0 0 12px 12px;
     font-family: 'Poiret One';
-    text-align:center;
+    text-align: center;
 }
+
 .locations {
     display: flex;
     flex-wrap: wrap;
@@ -138,5 +108,161 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align:center;
+    text-align: center;
+}
+
+@media screen and (min-width: 1000px) {
+    .itemName {
+        font-size: 30px;
+    }
+
+    .categories {
+        grid-template-columns: 300px 300px 300px;
+        column-gap: 15px;
+        grid-auto-rows: 300px;
+    }
+
+    .divPhoto {
+        height: 350px;
+    }
+
+    .homeLine {
+        height: 80px;
+    }
+
+    .circle-first {
+        top: 50px;
+        width: 450px;
+        height: 450px;
+        right: -80px;
+    }
+}
+
+@media screen and (min-width: 820px) and (max-width: 1000px) {
+    .itemName {
+        font-size: 25px;
+    }
+
+    .categories {
+        grid-template-columns: 250px 250px 250px;
+        column-gap: 10px;
+        grid-auto-rows: 250px;
+    }
+
+    .divPhoto {
+        height: 300px;
+    }
+
+    .homeLine {
+        height: 70px;
+    }
+
+    .circle-first {
+        top: 40px;
+        width: 380px;
+        height: 380px;
+        right: -70px;
+    }
+
+    .circleTXT p {
+        line-height: 20px;
+        font-size: 17px;
+    }
+}
+
+
+@media screen and (min-width: 600px) and (max-width: 820px) {
+    .itemName {
+        font-size: 20px;
+    }
+
+    .categories {
+        grid-template-columns: 190px 190px 190px;
+        column-gap: 8px;
+        grid-auto-rows: 190px;
+    }
+
+    .divPhoto {
+        height: 250px;
+    }
+
+    .homeLine {
+        height: 60px;
+    }
+
+    .circle-first {
+        top: 35px;
+        width: 350px;
+        height: 350px;
+        right: -70px;
+    }
+
+    .circleTXT p {
+        line-height: 17px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (min-width: 300px) and (max-width: 600px) {
+    .itemName {
+        font-size: 14px;
+    }
+
+    .categories {
+        grid-template-columns: 150px 150px 150px;
+        column-gap: 8px;
+        grid-auto-rows: 150px;
+    }
+
+    .divPhoto {
+        height: 200px;
+    }
+    
+    .homeLine {
+        height: 50px;
+    }
+
+    .circle-first {
+        top: 25px;
+        width: 300px;
+        height: 300px;
+        right: -5px;
+    }
+
+    .circleTXT p {
+        line-height: 15px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .itemName {
+        font-size: 10px;
+    }
+
+    .categories {
+        grid-template-columns: 100px 100px 100px;
+        column-gap: 4px;
+        grid-auto-rows: 100px;
+    }
+
+    .divPhoto {
+        height: 180px;
+    }
+    
+    .homeLine {
+        height: 30px;
+    }
+
+    .circle-first {
+        top: 25px;
+        width: 250px;
+        height: 250px;
+        right: 5px;
+    }
+
+    .circleTXT p {
+        line-height: 13px;
+        font-size: 10px;
+    }
 }
