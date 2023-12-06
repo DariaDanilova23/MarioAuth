@@ -13,7 +13,7 @@ namespace MarioAuth.Controllers
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public string catalog { get; private set; }
+       // public string catalog { get; private set; }
         public ProductsController(ApplicationDbContext context)
         {
             _context = context;
@@ -24,7 +24,6 @@ namespace MarioAuth.Controllers
         {
             ViewData["catalogName"]=catalogName;
             var applicationDbContext = _context.Product.Where(p => p.CatalogSection == catalogId).ToListAsync();
-            catalog=catalogName;
             return View(await applicationDbContext);
         }
 

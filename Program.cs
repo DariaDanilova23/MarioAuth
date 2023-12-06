@@ -14,6 +14,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 );//добавление DbContexts к Services
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddControllersWithViews();
@@ -41,10 +42,43 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+    
+    
+    );
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var roles = new[] { "Admin", "User" }; //Определение ролей в системе
+    foreach (var role in roles) //Выполнение для каждой определенной роли
+    {
+        if (!await roleManager.RoleExistsAsync(role))
+            await roleManager.CreateAsync(new IdentityRole(role)); //Добавление роли в систему
+    }
 
+}
+/*
+using (var scope = app.Services.CreateScope())// Добавление администратора
+{
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+    string email = "admin@admin.ru"; // Задание параметров входа
+    string password = "Mariosevadmin49";
+    if (await userManager.FindByEmailAsync(email) == null) //Проверка на наличие пользовател в системе
+    {
+        var user = new IdentityUser();
+        user.UserName = email;
+        user.Email = email;
+
+        await userManager.CreateAsync(user, password); //Создание пользователя
+
+        await userManager.AddToRoleAsync(user, "Admin"); //Добавление роли
+
+    }
+
+}*/
 app.MapRazorPages();// для генерации страниц identity
 
 app.MapDefaultControllerRoute();//для админки
+
 
 app.Run();
