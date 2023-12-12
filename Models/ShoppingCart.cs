@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace MarioAuth.Models
 {
@@ -12,12 +13,14 @@ namespace MarioAuth.Models
 
         public int Quantity { get; set; }
 
-        public System.DateTime DateCreated { get; set; }
+        public DateTime DateCreated { get; set; }
 
+        
         [ForeignKey("Product")]
         public int ProductId { get; set; }
 
         public virtual Product Product { get; set; }
         public IdentityUser User { get; set; }
     }
+    
 }

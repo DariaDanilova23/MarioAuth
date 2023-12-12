@@ -15,11 +15,13 @@ namespace MarioAuth
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+           
             base.OnModelCreating(modelBuilder);
         }
         public DbSet<MarioAuth.Models.Catalog>? Catalog { get; set; }
         public DbSet<MarioAuth.Models.Product>? Product { get; set; }
         public DbSet<MarioAuth.Models.MasterClass>? MasterClass { get; set; }
         public DbSet<MarioAuth.Models.ShoppingCart>? ShoppingCart { get; set; }
-        }
+        public DbSet<MarioAuth.Models.Order>? Order { get; set; }
+    }
 }
