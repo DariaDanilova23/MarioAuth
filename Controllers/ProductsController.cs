@@ -7,25 +7,30 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MarioAuth;
 using MarioAuth.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace MarioAuth.Controllers
 {
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
-       // public string catalog { get; private set; }
-        public ProductsController(ApplicationDbContext context)
+        private readonly UserManager<IdentityUser> _userManager;
+        // public string catalog { get; private set; }
+        public ProductsController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Products
         public async Task<IActionResult> Index(int catalogId, string catalogName)
         {
             ViewData["catalogName"]=catalogName;
+            string currentUser = _userManager.GetUserId(User);
             var applicationDbContext = _context.Product.Where(p => p.CatalogSection == catalogId).ToListAsync();
             return View(await applicationDbContext);
         }
+
 
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)

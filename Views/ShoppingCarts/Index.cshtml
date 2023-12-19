@@ -1,42 +1,52 @@
 ﻿@model IEnumerable<MarioAuth.Models.ShoppingCart>
 
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <link rel="stylesheet" href="~/css/shopping.css" />
 }
+<h1 class="tittle">Корзина</h1>
 
-<h1>Index</h1>
+<div class="cartPage">
+    <div class="shopingCart">
+        @foreach (var item in Model)
+        {
+            <div class="cartItem">
+                <img class="productPhoto" src="data:image/png; base64,@Convert.ToBase64String(item.Product.Image)" />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                <p id="cartTXT">@Html.DisplayFor(modelItem => item.Product.Name)</p>
+
+
+                <p id="cartTXT">@Html.DisplayFor(modelItem => item.Product.Price) ₽</p>
+
+                <div class="quantitySet">
+                    <form asp-action="ChangeQuantity" asp-route-cartItemId="@item.Id" method="post">
+                        <input type="hidden" name="action" value="add" />
+                        <button type="submit">Увеличить</button>
+                    </form>
+
+                    <!-- Текущее количество -->
+                    <span>@item.Quantity</span>
+
+                    <!-- Уменьшение количества -->
+                    <form asp-action="ChangeQuantity" asp-route-cartItemId="@item.Id" method="post">
+                        <input type="hidden" name="action" value="remove" />
+                        <button type="submit">Уменьшить</button>
+                    </form>
+                </div>
+
+                <form asp-action="DeleteConfirmed" asp-route-id="@item.Id">
+                    <input type="submit" value="X" class="btn btn-danger" />
+                </form>
+            </div>
+        }
+    </div>
+    <div class="cost">
+        <div class="costInfo">
+            <h3>Итого: @ViewBag.TotalCost</h3>
+            <a href="@Url.Action("Index", "Order")" class="btn btn-danger" >Оформить заказ</a>
+        </div>
+
+    </div>
+</div>

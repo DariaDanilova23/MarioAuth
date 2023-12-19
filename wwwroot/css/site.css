@@ -98,11 +98,17 @@ header {
     .tittle {
         font-size: 56px;
     }
+    .nav-link {
+        font-size: 18px;
+    }
 }
 
 @media screen and (min-width: 300px) and (max-width:800px) {
     .tittle {
         font-size: 45px;
+    }
+    .nav-link {
+        font-size: 14px;
     }
 }
 
@@ -111,16 +117,7 @@ header {
         font-size: 30px;
     }
 }
-/*
 
-
-
-.footer-content {
-    margin-bottom: auto;
-    margin-top: auto;
-    display: flex;
-    justify-content: space-between;
-}*/
 .footer {
     background-color: white;
 }
@@ -147,6 +144,7 @@ header {
 .socialmedia {
     margin: auto;
     height: 35px;
+    vertical-align: bottom;
 }
 
 @media screen and (max-width: 600px) and (min-width:400px) {

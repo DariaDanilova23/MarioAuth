@@ -20,5 +20,6 @@ namespace MarioAuth.Models
 
         [ForeignKey("CatalogSection")]
         public Catalog Catalog { get; set; }
+
     }
 }
