@@ -27,17 +27,36 @@ namespace MarioAuth.Controllers
 
         public async Task<IActionResult> Confirmation()
         {
+
             return View();
 
         }
 
-        // POST: OrderController/Create
+        public bool ClearCart()
+        {
+            string currentUser = _userManager.GetUserId(User);
+
+            if (currentUser != null)
+            {
+
+                var recordsToDelete = _context.ShoppingCart.Where(p => p.UserId == currentUser).ToList();
+
+                if (recordsToDelete.Any())
+                {
+                    _context.ShoppingCart.RemoveRange(recordsToDelete);
+                    _context.SaveChanges();
+                    return true;
+                }
+            }
+            return false;
+        }
+
         [HttpPost]
         public ActionResult Create(string tel, string delivery, string address, string comment)
         {
             try
             {
-                var addresShop = "";
+                string addresShop;
                 if (delivery == "shop")
                 {
                     addresShop = "Самовывоз из магазина на Тараса Шевченко";
@@ -58,47 +77,17 @@ namespace MarioAuth.Controllers
 
                 _context.Order.Add(newOrder);
 
-                // Сохраняем изменения в базу данных
+                
                 _context.SaveChanges();
+                ClearCart();
+
                 return RedirectToAction("Confirmation");
-                //return Json(new { result = "Success" });
             }
             catch
             {
-                //ОШИБКА
-                return View();
+                return RedirectToAction("Index");
             }
         }
-
-        /* public ActionResult Create( string phone, string address, string comment)
-         {
-             try
-             {
-                 string currentUserEmail = _userManager.GetUserId(User);
-                 var newOrder = new Order
-                 {
-                     UserId = currentUserEmail,
-                     Phone = phone,
-                     OrderList =getOrderList(),
-                     DeliveryAddress =address,
-                     Comment = comment
-                 };
-
-                 _context.Order.Add(newOrder);
-
-                 // Сохраняем изменения в базу данных
-                 _context.SaveChanges();
-                 return RedirectToAction("Confirmation");
-                 //return Json(new { result = "Success" });
-             }
-             catch
-             {
-                 //ОШИБКА
-                 return View();
-             }
-         }*/
-
-
 
         public string getOrderList()
         {

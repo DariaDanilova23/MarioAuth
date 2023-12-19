@@ -26,25 +26,6 @@ namespace MarioAuth.Controllers
                           View(await _context.News.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.News'  is null.");
         }
-
-        // GET: News/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.News == null)
-            {
-                return NotFound();
-            }
-
-            var news = await _context.News
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (news == null)
-            {
-                return NotFound();
-            }
-
-            return View(news);
-        }
-
       
     }
 }

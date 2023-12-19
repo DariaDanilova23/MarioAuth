@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MarioAuth.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231211115338_Order")]
-    partial class Order
+    [Migration("20231212101914_CartProduct")]
+    partial class CartProduct
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

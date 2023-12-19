@@ -1,5 +1,5 @@
 ﻿// main.js
-
+/*
     $(document).ready(function () {
         $(".product-form").submit(function (event) {
             // Отменить стандартное поведение формы
@@ -29,7 +29,7 @@
                 }
             });
         });
-    });
+    });*/
 /*
 $(document).ready(function () {
     // Обработчик события, например, нажатия кнопки

@@ -9,9 +9,11 @@ using MarioAuth;
 using MarioAuth.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.CodeAnalysis;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MarioAuth.Controllers
 {
+    [Authorize]
     public class ShoppingCartsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -105,12 +107,6 @@ namespace MarioAuth.Controllers
             return Json(new { result = "Success" });
         }
 
-        public bool InCart(int productId)
-        {
-            return true;
-        }
-
-        // GET: ShoppingCarts/Create
         public bool Create(int productId, string userId)
         {
             var newCartItem = new ShoppingCart
@@ -153,15 +149,5 @@ namespace MarioAuth.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
-        [HttpGet]
-        public IActionResult IsInShoppingCart(int productId)
-        {
-            // Проверить, находится ли товар в корзине
-            var isInCart = _context.ShoppingCart.Any(item => item.ProductId == productId);
-
-            return Json(new { isInCart });
-        }
-
     }
 }
