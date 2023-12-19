@@ -1,6 +1,9 @@
 using MarioAuth;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using System.Configuration;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,14 +16,19 @@ builder.Services.AddDbContext<ApplicationDbContext>(
     contex=>contex.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
 );//добавление DbContexts к Services
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders()
+    .AddErrorDescriber<IdentityErrorDescriber>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
-builder.Services.AddCoreAdmin();//админка
+builder.Services.AddCoreAdmin("Admin");//админка
 
 var app = builder.Build();
 
@@ -46,6 +54,15 @@ app.MapControllerRoute(
     
     
     );
+//Для русского языка
+var supportedCultures = new[] { new CultureInfo("ru-RU") };
+app.UseRequestLocalization(new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture("ru-RU"),
+    SupportedCultures = supportedCultures,
+    SupportedUICultures = supportedCultures
+});
+//
 using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
@@ -57,15 +74,19 @@ using (var scope = app.Services.CreateScope())
     }
 
 }
-/*
+
+
 using (var scope = app.Services.CreateScope())// Добавление администратора
 {
+    var configuration = scope.ServiceProvider.GetRequiredService<IConfiguration>();
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-    string email = "admin@admin.ru"; // Задание параметров входа
-    string password = "Mariosevadmin49";
+    string email = configuration["AdminUser:Email"];
+    string password = configuration["AdminUser:Password"];
+
     if (await userManager.FindByEmailAsync(email) == null) //Проверка на наличие пользовател в системе
     {
         var user = new IdentityUser();
+        
         user.UserName = email;
         user.Email = email;
 
@@ -75,7 +96,7 @@ using (var scope = app.Services.CreateScope())// Добавление администратора
 
     }
 
-}*/
+}
 app.MapRazorPages();// для генерации страниц identity
 
 app.MapDefaultControllerRoute();//для админки

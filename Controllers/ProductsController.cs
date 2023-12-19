@@ -27,11 +27,19 @@ namespace MarioAuth.Controllers
         {
             ViewData["catalogName"]=catalogName;
             string currentUser = _userManager.GetUserId(User);
-            var applicationDbContext = _context.Product.Where(p => p.CatalogSection == catalogId).ToListAsync();
-            return View(await applicationDbContext);
+            //var applicationDbContext = _context.Product.Where(p => p.CatalogSection == catalogId).ToListAsync();
+            var products = _context.Product.Where(p => p.CatalogSection == catalogId).ToList();
+            var shoppingCart = _context.ShoppingCart.Where(p=>p.UserId==currentUser).ToList();
+            // return View(await applicationDbContext);
+            var viewModel = new ProductInCart
+            {
+                Products = products,
+                ShoppingCarts = shoppingCart
+            };
+            return View(viewModel);
         }
 
-
+        /*
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -169,6 +177,6 @@ namespace MarioAuth.Controllers
         private bool ProductExists(int id)
         {
           return (_context.Product?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
+        }*/
     }
 }

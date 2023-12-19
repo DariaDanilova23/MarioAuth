@@ -22,11 +22,9 @@ namespace MarioAuth.Controllers
         // GET: MasterClasses
         public async Task<IActionResult> Index()
         {
-              return _context.MasterClass != null ? 
-                          View(await _context.MasterClass.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.MasterClass'  is null.");
+            return _context.MasterClass != null ?
+                        View(await _context.MasterClass.ToListAsync()) :
+                        Problem("Entity set 'ApplicationDbContext.MasterClass'  is null.");
         }
-
-       
     }
 }

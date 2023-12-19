@@ -1,23 +1,29 @@
-
-
 $(document).ready(function () {
-    function IsInShoppingCart(productId) {
-        $.ajax({
-            url: '/Shopping/IsInShoppingCart',
-            type: 'GET',
-            data: { productId: productId },
-            success: function (result) {
-                if (result.isInCart) {
-                    console.log('Товар находится в корзине');
+    $(".product-form").submit(function (event) {
+        // Отменить стандартное поведение формы
+        event.preventDefault();
+        let button = $(this)[0].querySelector('.addToCart');
+        // Получить данные формы
+        var formData = $(this).serialize();
 
-                } else {
-                    console.log('Товар не находится в корзине');
-                }
+        // Отправить AJAX-запрос на сервер
+        $.ajax({
+            url: "/ShoppingCarts/AddToCart",
+            type: "POST",
+            data: formData,
+            success: function (result) {
+                console.log(result);
+               // $(button).html('<p>В корзине</p>');
+                button.innerHTML = "В корзине";
+                button.disabled = true;
+                button.classList.remove('addToCart');
+                button.classList.add('cartItemBtn');
+                
+                // Дополнительная логика, если необходимо
             },
             error: function (error) {
-                console.error('Произошла ошибка при проверке корзины', error);
+                console.log(error);
             }
         });
-    }
-
-}
+    });
+});

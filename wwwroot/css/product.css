@@ -44,6 +44,13 @@
     border:0;
 }
 
+.cartItemBtn {
+    background-color: green;
+    border-radius: 20px;
+    color: white;
+    border: 0;
+}
+
 @media screen and (min-width: 1000px) {
     .productPhoto {
         width: 250px;
