@@ -54,15 +54,7 @@ app.MapControllerRoute(
     
     
     );
-//Для русского языка
-var supportedCultures = new[] { new CultureInfo("ru-RU") };
-app.UseRequestLocalization(new RequestLocalizationOptions
-{
-    DefaultRequestCulture = new RequestCulture("ru-RU"),
-    SupportedCultures = supportedCultures,
-    SupportedUICultures = supportedCultures
-});
-//
+
 using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();

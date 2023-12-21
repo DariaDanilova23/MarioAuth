@@ -52,7 +52,7 @@ namespace MarioAuth.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(string tel, string delivery, string address, string comment)
+        public ActionResult Create(string tel, string delivery, string address, string comment = null)
         {
             try
             {
@@ -65,6 +65,7 @@ namespace MarioAuth.Controllers
                 {
                     addresShop = address;
                 }
+
                 string currentUserEmail = _userManager.GetUserId(User);
                 var newOrder = new Order
                 {
@@ -77,15 +78,18 @@ namespace MarioAuth.Controllers
 
                 _context.Order.Add(newOrder);
 
-                
+
                 _context.SaveChanges();
                 ClearCart();
 
                 return RedirectToAction("Confirmation");
             }
-            catch
+            catch (Exception ex)
             {
+
+                TempData["ErrorMessage"] = "Произошла ошибка при создании заказа!";
                 return RedirectToAction("Index");
+
             }
         }
 

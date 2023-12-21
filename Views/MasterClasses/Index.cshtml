@@ -3,14 +3,21 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    <link rel="stylesheet" href="~/css/master1.css" />
+    <link rel="stylesheet" href="~/css/master.css" />
 }
-<div class="masterPage">
+<div class="masterPage" id="mainDiv">
     <div class="intro">
         <div class="divPhoto">
-            <img class="mainPhoto" src="~/img/master/masterPhoto.png">
+            <img class="mainPhoto" src="~/img/master/masterMainPhoto.png">
+        </div>
+        <div class="circle">
+            <h1 class="appointment">
+                Запись на курс<br>
+                +79781010010
+            </h1>
         </div>
     </div>
+    <div id="pageSection">
     <h1 class="title">Мастер-Классы</h1>
     @foreach (var item in Model)
     {
@@ -24,4 +31,5 @@
             </div>
         </div>
     }
+    </div>
 </div>

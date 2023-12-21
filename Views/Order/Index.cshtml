@@ -4,18 +4,34 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     <link rel="stylesheet" href="~/css/order.css" />
 }
-<h1 class="title">Оформление заказа</h1>
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+<div id="pageSection">
+    <h1 class="title">Оформление заказа</h1>
 
-<form class="order-form" action="@Url.Action("Create", "Order")" method="post">
-    <input type="tel" placeholder="Введите номер" id="tel" name="tel" class="tel" />
-    <select name="delivery" id="delivery" onchange="deliveryAdress()">
-        <option value="">--Выберите способ доставки--</option>
-        <option value="shop">Самовывоз (ул. Тараса Шевченко 49)</option>
-        <option value="home">Доставка</option>
-    </select>
-    <textarea placeholder="Комментарий к заказу" name="comment" id="comment"></textarea>
-    <input class="orderBtn" type="submit" />
-</form>
+    <div class="formContainer">
+        <form class="order-form" action="@Url.Action("Create", "Order")" method="post">
+            <div id="inputOrder">
+                <input type="tel" placeholder="Введите номер телефона" id="tel" name="tel" class="tel" />
+            </div>
+            <div id="inputOrder">
+                <select name="delivery" id="delivery" onchange="deliveryAdress()">
+                    <option value="">--Выберите способ доставки--</option>
+                    <option value="shop">Самовывоз (ул. Тараса Шевченко 49)</option>
+                    <option value="home">Доставка</option>
+                </select>
+            </div>
+            <div id="inputOrder">
+                <textarea placeholder="Комментарий к заказу" name="comment" id="comment"></textarea>
+            </div>
+            <input class="btn orderBtn" type="submit" />
+        </form>
+    </div>
+</div>
 <!--<form class="order-form">
     <input type="tel" placeholder="Введите номер" id="tel" class="tel" />
     <select name="delivery" id="delivery" onchange="deliveryAdress()">
@@ -27,4 +43,5 @@
     <input class="orderBtn" type="submit" />
 </form>
 -->
+
 <script type="text/javascript" src="~/js/makeOrder.js" charset="utf-8"></script>

@@ -1,0 +1,26 @@
+﻿.formContainer, .thanksContainer {
+    width: 50%;
+    margin: auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+#inputOrder {
+    margin-bottom: 10px;
+    width:100%
+}
+    #inputOrder > * {
+        width: 100%;
+        border-radius: 5px;
+        border: 1.5px solid #91BCBF;
+    }
+
+.orderBtn {
+    color: white;
+    background-color: #91BCBF;
+    margin: auto;
+    width: 40%;
+}

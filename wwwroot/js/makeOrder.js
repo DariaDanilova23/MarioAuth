@@ -1,12 +1,13 @@
 function deliveryAdress() {
-    const select = document.getElementById('delivery'); // выбираем элемент select
-    const selectedValue = select.value; // получаем значение выбранного элемента
+    const select = document.getElementById('delivery'); // РІС‹Р±РёСЂР°РµРј СЌР»РµРјРµРЅС‚ select
+    const selectedValue = select.value; // РїРѕР»СѓС‡Р°РµРј Р·РЅР°С‡РµРЅРёРµ РІС‹Р±СЂР°РЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
     if (selectedValue == "home") {
         var newInput = document.createElement("input");
         newInput.type = "text";
         newInput.name = "address";
         newInput.id = "address";
-        newInput.placeholder = "Введите адрес доставки";
+        newInput.placeholder = "Р’РІРµРґРёС‚Рµ Р°РґСЂРµСЃ РґРѕСЃС‚Р°РІРєРё";
+        
         select.insertAdjacentElement('afterend', newInput);
     }
     else {
@@ -58,7 +59,7 @@ $('.order-form').submit(function (event) {
     var addresShop;
     console.log($('#comment').val());
     if ($('#delivery').val() == 'shop') {
-        addresShop = "Самовывоз из магазина на Тараса Шевченко";
+        addresShop = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
     }
     else {
         addresShop = $('#address').val();
@@ -69,13 +70,13 @@ $('.order-form').submit(function (event) {
         comment: $('#comment').val()
     };
    
-// Отправить AJAX-запрос на сервер
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ AJAX-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 $.ajax({
     url: "/Order/Create",
     type: "POST",
     data: formData,
     success: function (result) {
-        console.log("удача");
+        console.log("пїЅпїЅпїЅпїЅпїЅ");
     },
     error: function (error) {
 

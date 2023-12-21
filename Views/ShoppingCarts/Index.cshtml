@@ -1,52 +1,76 @@
 ﻿@model IEnumerable<MarioAuth.Models.ShoppingCart>
-
-
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
     <link rel="stylesheet" href="~/css/shopping.css" />
 }
-<h1 class="title">Корзина</h1>
+<div id="pageSection">
+    @if (!Model.Any())
+    {
+        <h1 class="title">Корзина пуста</h1>
+    }
+    else
+    {
+        <h1 class="title">Корзина</h1>
 
-<div class="cartPage">
-    <div class="shopingCart">
-        @foreach (var item in Model)
-        {
-            <div class="cartItem">
-                <img class="productPhoto" src="data:image/png; base64,@Convert.ToBase64String(item.Product.Image)" />
+        <div class="cartPage">
 
-                <p id="cartTXT">@Html.DisplayFor(modelItem => item.Product.Name)</p>
+            <div class="shopingCart">
 
+                @foreach (var item in Model)
+                {
+                    <div class="cartItemContainer">
+                        <div class="cartItem">
 
-                <p id="cartTXT">@Html.DisplayFor(modelItem => item.Product.Price) ₽</p>
+                            <div class="leftCartItem">
 
-                <div class="quantitySet">
-                    <form asp-action="ChangeQuantity" asp-route-cartItemId="@item.Id" method="post">
-                        <input type="hidden" name="action" value="add" />
-                        <button type="submit">Увеличить</button>
-                    </form>
+                                <div class="firstLeft">
+                                    <div class="imgDiv">
+                                        <img class="productPhoto" src="data:image/png; base64,@Convert.ToBase64String(item.Product.Image)" />
+                                    </div>
 
-                    <!-- Текущее количество -->
-                    <span>@item.Quantity</span>
+                                    <form asp-action="DeleteConfirmed" asp-route-id="@item.Id" class="delProduct">
+                                        <!-- <input type="submit" value="X" class="btn btnDel" />-->
+                                        <div class="btnDel">
+                                            <svg class="delete-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="ag15-b1"><path fill="currentColor" d="m4.888 3.035.275-.826A2.5 2.5 0 0 1 7.535.5h.93a2.5 2.5 0 0 1 2.372 1.71l.275.825c2.267.09 3.555.406 3.555 1.527 0 .938-.417.938-1.25.938H2.583c-.833 0-1.25 0-1.25-.938 0-1.12 1.288-1.437 3.555-1.527Zm1.856-.299-.088.266C7.082 3 7.53 3 8 3c.47 0 .918 0 1.345.002l-.089-.266a.833.833 0 0 0-.79-.57h-.931a.833.833 0 0 0-.79.57ZM2.167 7.167c0-.6.416-.834.833-.834h10c.417 0 .833.235.833.834 0 6.666-.416 8.333-5.833 8.333s-5.833-1.667-5.833-8.333Zm4.166 1.666a.833.833 0 0 0-.833.834v1.666a.833.833 0 1 0 1.667 0V9.667a.833.833 0 0 0-.834-.834Zm4.167.834a.833.833 0 1 0-1.667 0v1.666a.833.833 0 1 0 1.667 0V9.667Z"></path></svg>
+                                        </div>
+                                    </form>
+                                </div>
 
-                    <!-- Уменьшение количества -->
-                    <form asp-action="ChangeQuantity" asp-route-cartItemId="@item.Id" method="post">
-                        <input type="hidden" name="action" value="remove" />
-                        <button type="submit">Уменьшить</button>
-                    </form>
+                                <div class="infoProduct">
+                                    <div class="price"><p class="priceTxt">@Html.DisplayFor(modelItem => item.Product.Price) ₽</p></div>
+                                    <p id="cartTXT">@Html.DisplayFor(modelItem => item.Product.Name)</p>
+                                </div>
+                            </div>
+
+                            <div class="rightCartItem">
+                                <div class="quantitySet">
+                                    <input type="number" step="1" min="1" max="25" id="quantityNum" onchange="changeQuantity(this.value, @item.Id)" value="@item.Quantity" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="cost">
+                <div class="costInfo">
+                    <h1 class="titleOrder">Заказ</h1>
+                    <p class="costTotal">К оплате: <span id="totalCost">@ViewBag.TotalCost ₽</span></p>
+                    <a href="@Url.Action("Index", "Order")" class="btn btnCart">Оформить заказ</a>
                 </div>
 
-                <form asp-action="DeleteConfirmed" asp-route-id="@item.Id">
-                    <input type="submit" value="X" class="btn btn-danger" />
-                </form>
             </div>
-        }
-    </div>
-    <div class="cost">
-        <div class="costInfo">
-            <h3>Итого: @ViewBag.TotalCost</h3>
-            <a href="@Url.Action("Index", "Order")" class="btn btn-danger" >Оформить заказ</a>
-        </div>
 
-    </div>
+        </div>
+    }
 </div>
+<script>
+    $(document).ready(function () {
+        $(".delete-icon").click(function () {
+            $(this).closest("form").submit();
+        });
+    });
+</script>
+
+<script src="~/js/quantity.js"></script>

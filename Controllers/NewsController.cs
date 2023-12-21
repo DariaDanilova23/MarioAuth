@@ -19,13 +19,33 @@ namespace MarioAuth.Controllers
             _context = context;
         }
 
-        // GET: News
+        public IActionResult Index(int? page)
+        {
+            int pageSize = 5; // Количество новостей на одной странице
+            int pageNumber = page ?? 1; // Номер текущей страницы
+
+            var news = _context.News.ToList(); // Получение всех новостей (замените на ваш запрос данных)
+            if (news == null) return NotFound();
+            
+            var paginatedNews = news.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+
+            var viewModel = new NewsViewModel
+            {
+                News = paginatedNews,
+                PageSize = pageSize,
+                CurrentPage = pageNumber,
+                TotalItems = news.Count
+            };
+
+            return View(viewModel);
+        }
+        /*
         public async Task<IActionResult> Index()
         {
               return _context.News != null ? 
                           View(await _context.News.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.News'  is null.");
         }
-      
+      */
     }
 }

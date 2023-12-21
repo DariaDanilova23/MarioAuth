@@ -4,6 +4,16 @@
     justify-content:center;
     flex-wrap:wrap;
 }*/
+.backBtn {
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 20px;
+    cursor:pointer;
+}
+.backBtn img{
+    height:30px;
+}
+
 .productShop {
     display: grid;
     justify-content: center;
@@ -35,20 +45,19 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: black;
-} 
-
-.addToCart {
-    border-radius: 20px;
-    background-color: #91BCBF;
-    color:white;
-    border:0;
 }
-
-.cartItemBtn {
-    background-color: green;
+#cartBtn {
     border-radius: 20px;
     color: white;
     border: 0;
+}
+.addToCart {
+    background-color: #91BCBF;
+}
+
+.cartItemBtn {
+    background-color: #388B70;
+    padding: 1px;
 }
 
 @media screen and (min-width: 1000px) {
@@ -68,8 +77,9 @@
     .productInfo{
         height:70px;
     }
-    .addToCart {
+    #cartBtn {
         padding: 5px 20px;
+        font-size: 16px
     }
 }
 
@@ -91,8 +101,9 @@
     .productInfo{
         height:40px;
     }
-    .addToCart {
+    #cartBtn {
         padding: 4px 15px;
+        font-size: 14px;
     }
 }
 
@@ -115,31 +126,41 @@
     .productInfo {
         height:30px;
     }
-    .addToCart {
+    #cartBtn {
         padding: 3px 10px;
+        font-size: 12px;
+    }
+}
+@media screen and (min-width: 300px) and (max-width: 600px) {
+    .description {
+        display: none;
     }
 }
 
 @media screen and (min-width: 300px) and (max-width: 600px) {
     .productPhoto {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
     }
 
     .productInfo p {
         font-size: 12px;
     }
+
     .productShop {
         grid-template-columns: 120px 120px 120px;
         column-gap: 8px;
         row-gap: 8px;
         grid-auto-rows: 170px;
     }
+
     .productInfo {
-        height:30px;
+        height: 30px;
     }
-    .addToCart {
+
+    #cartBtn {
         padding: 2px 5px;
+        font-size: 10px;
     }
 }
 
@@ -157,6 +178,10 @@
         column-gap: 4px;
         row-gap: 4px;
         grid-auto-rows: 100px;
+    }
+    #cartBtn {
+        font-size: 10px;
+        font-size: 8px;
     }
     .productInfo {
     }

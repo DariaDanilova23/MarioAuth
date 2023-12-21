@@ -1,23 +1,14 @@
 html {
+    position: relative;
+    min-height: 100%;
     font-size: 14px;
     scroll-behavior: smooth;
-}
-
-@media (max-width: 600px) {
-    header {
-        display: block;
-    }
 }
 
 @media (min-width: 768px) {
     html {
         font-size: 16px;
     }
-}
-
-html {
-    position: relative;
-    min-height: 100%;
 }
 
 body {
@@ -29,6 +20,7 @@ body {
 .headerImg {
     height: 100%;
     margin: auto;
+    text-decoration: none;
 }
 
     .headerImg img {
@@ -75,12 +67,56 @@ header {
 .nav-link {
     font-family: 'Poiret One';
     color: #104241;
-    font-size: 18px;
+}
+@media screen and (min-width: 800px) {
+    .nav-link {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width:700px) (max-width: 800px) {
+    .nav-link {
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width:576px) (max-width: 700px) {
+    .nav-link {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .nav-link {
+        font-size: 20px;
+    }
+}
+
+#text-replacement {
+    display: none;
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (max-width: 576px) {
+    #responsiveImage {
+        display: none;
+    }
+
+    #text-replacement {
+        display: block;
+    }
 }
 
 .intro {
-    overflow: hidden;
+    overflow-x: hidden;
     width: 100%;
+}
+
+#mainDiv {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
 }
 
 .divPhoto {
@@ -93,9 +129,24 @@ header {
     object-fit: cover;
 }
 
-#pageSection {
-    margin-top: 80px;
+@media screen and (min-width: 800px) {
+    #pageSection {
+        margin-top: 80px;
+    }
 }
+
+@media screen and (min-width: 300px) and (max-width:800px) {
+    #pageSection {
+        margin-top: 70px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    #pageSection {
+        margin-top: 30px;
+    }
+}
+
 
 .title {
     text-align: center;
@@ -106,25 +157,26 @@ header {
     .title {
         font-size: 56px;
     }
-
-    .nav-link {
-        font-size: 18px;
+}
+@media screen and (min-width: 600px) and (max-width:800px) {
+    .title {
+        font-size: 48px;
     }
 }
-
-@media screen and (min-width: 300px) and (max-width:800px) {
+@media screen and (min-width: 400px) and (max-width:600px) {
     .title {
         font-size: 45px;
     }
-
-    .nav-link {
-        font-size: 14px;
+}
+@media screen and (min-width: 300px) and (max-width:400px) {
+    .title {
+        font-size: 30px;
     }
 }
 
 @media screen and (max-width: 300px) {
     .title {
-        font-size: 30px;
+        font-size: 20px;
     }
 }
 
@@ -176,4 +228,12 @@ header {
         padding: 2px;
         height: 20px;
     }
+}
+
+.formAuth {
+    margin: auto;
+}
+
+.btn-formAuth {
+    background-color: #91BCBF;
 }

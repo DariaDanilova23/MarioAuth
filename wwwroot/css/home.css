@@ -1,12 +1,4 @@
-﻿body {
-}
-
-.homePage {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-}
-
+﻿
 .divPhoto {
     width: 100%
 }
@@ -15,31 +7,6 @@
     background-color: #91BCBF;
     width: 100%;
 }
-/*
-.benefitsCollection {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly; 
-    width: 30%;
-}
-.benefit {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
-    .benefit img {
-        height: 35px;
-        object-fit:contain;
-    }
-    .benefit p {
-        color: white;
-        font-size: 12px;
-        line-height: 14px;
-        text-align: center;
-        margin: 0;
-    }
-    */
 
 .circle-first {
     position: absolute;
@@ -64,10 +31,9 @@
         line-height: 32px;
     }
 
-.sign {
-    height: 15%;
+.categoryDiv{
+    margin-top:5px;
 }
-
 .categories {
     display: grid;
     margin: auto;
@@ -78,8 +44,8 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    cursor: pointer;
 }
-
     .itemCategory img {
         height: 80%;
         object-fit: cover;

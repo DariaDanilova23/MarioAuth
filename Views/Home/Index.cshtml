@@ -7,7 +7,7 @@
 }
 
 
-<div class="homePage">
+<div class="homePage" id="mainDiv">
     <div class="intro">
         <div class="divPhoto">
             <img class="mainPhoto" src="~/img/home/homePhoto.jpg">
@@ -44,7 +44,7 @@
     </div>
     <div class="categoryDiv" id="pageSection">
         <h1 class="title">МЫ ПЕЧЁМ</h1>
-        <div class="categories">
+        <div class="categories" id="backCategory">
             @foreach (var item in Model)
             {
                 <div class="itemCategory" onclick="location.href='@Url.Action("Index", "Products", new { catalogId = item.Id, catalogName=item.Name})'">

@@ -9,10 +9,12 @@ menu.onclick = function (event) {
 function imgMouseOver(containerPhoto) {
    /* var descrip = document.getElementsByClassName("description")[0];
     var container = document.getElementsByClassName("containerPhoto")[0];*/
-    $(containerPhoto).find('.productPhoto').css("opacity", "0.4");
-    $(containerPhoto).find('.description').css('display','block');
-    containerPhoto.style.background = "#0000";
-
+    console.log(window.innerWidth);
+    if (window.innerWidth >= 600) {
+        $(containerPhoto).find('.productPhoto').css("opacity", "0.4");
+        $(containerPhoto).find('.description').css('display', 'block');
+        containerPhoto.style.background = "#0000";
+    }
     // Изменение стиля description
     //img.nextElementSibling.style.display = "block";
    /* container.style.background = "#0000";

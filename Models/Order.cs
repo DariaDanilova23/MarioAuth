@@ -17,7 +17,7 @@ namespace MarioAuth.Models
         public string OrderList { get; set; }
         public string DeliveryAddress { get; set; }
 
-        public string Comment { get; set;}
+        public string? Comment { get; set;}
         public IdentityUser User { get; set; }
     }
 }

@@ -7,21 +7,21 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item headerImg">
-            <a href="@Url.Action("Index", "ShoppingCarts")"><img src="~/img/cart.png" /></a>
+            <a class="nav-link" href="@Url.Action("Index", "ShoppingCarts")"><img id="responsiveImage" src="~/img/cart.png" alt="Корзина" /><p class="nav-link" id="text-replacement">Корзина</p></a>
         </li>
         @if (User.IsInRole("Admin"))
         {
             <li class="nav-item headerImg">
-                <a href="@Url.Action("Index", "CoreAdmin")"><img src="~/img/admin.png" /></a>
+                <a class="nav-link" href="@Url.Action("Index", "CoreAdmin")"><img id="responsiveImage" src="~/img/adminBtn.png" alt="Панель администратора" /><p class="nav-link" id="text-replacement">Панель администратора</p></a>
             </li>
         }
-        else
+        <!-- else
         {
             <li class="nav-item">
                 <a id="manage" class="nav-link text-dark">@UserManager.GetUserName(User)!</a>
-                <!-- asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"-->
+                 asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"
             </li>
-        }
+        }-->
         <li class="nav-item">
             <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                 <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Выйти</button>

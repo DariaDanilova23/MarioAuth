@@ -1,8 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    <link rel="stylesheet" href="~/css/confirm.css" />
+    <link rel="stylesheet" href="~/css/order.css" />
 }
-<h1>Спасибо за заказ!</h1>
-<p>Наш оператор скоро свяжется с Вами</p>
-<a href="@Url.Action("Index","Home")">Вернутся на главную страницу</a>
+<div id="pageSection">
+    <div class="thanksContainer">
+        <h1 class="title">Спасибо за заказ!</h1>
+        <p>Наш оператор скоро свяжется с Вами</p>
+        <a class="btn orderBtn" href="@Url.Action("Index","Home")">Вернутся на главную страницу</a>
+    </div>
+</div>
+</div>

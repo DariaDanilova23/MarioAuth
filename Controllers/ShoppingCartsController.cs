@@ -36,28 +36,44 @@ namespace MarioAuth.Controllers
         }
 
         [HttpPost]
-        public IActionResult ChangeQuantity(int cartItemId, string action)
+        public IActionResult ChangeQuantity(int cartItemId, int quantityValue)
         {
             var cartItem = _context.ShoppingCart.Find(cartItemId);
 
             if (cartItem != null)
             {
-                if (action=="add")
-                {
-                    cartItem.Quantity++;
-                }
-
-                if (action=="remove" && cartItem.Quantity > 1)
-                {
-                    cartItem.Quantity--;
-
-                }
+                cartItem.Quantity=quantityValue;
                 _context.SaveChanges();
             }
-            return RedirectToAction("Index");
+            return Json(new { totalCost = TotalPrice() });
         }
 
-        public decimal TotalPrice()
+            //------------------Старое------------//
+            /*
+            [HttpPost]
+            public IActionResult ChangeQuantity(int cartItemId, string action)
+            {
+                var cartItem = _context.ShoppingCart.Find(cartItemId);
+
+                if (cartItem != null)
+                {
+                    if (action=="add")
+                    {
+                        cartItem.Quantity++;
+                    }
+
+                    if (action=="remove" && cartItem.Quantity > 1)
+                    {
+                        cartItem.Quantity--;
+
+                    }
+                    _context.SaveChanges();
+                }
+                return RedirectToAction("Index");
+            }
+            */
+
+            public decimal TotalPrice()
         {
             string currentUser = _userManager.GetUserId(User);
             List<ShoppingCart> itrmsInCart = _context.ShoppingCart
@@ -65,38 +81,8 @@ namespace MarioAuth.Controllers
            .Where(item => item.UserId == currentUser)
            .ToList();
             decimal totalCost = itrmsInCart.Sum(item => item.Quantity * Convert.ToDecimal(item.Product.Price));
-
             return totalCost;
         }
-
-        /*  [HttpPost]
-          public IActionResult IncreaseQuantity(int cartItemId)
-          {
-              var cartItem = _context.ShoppingCart.Find(cartItemId);
-
-              if (cartItem != null)
-              {
-                  cartItem.Quantity++;
-                  _context.SaveChanges();
-              }
-
-              return RedirectToAction("Index");
-          }
-
-          [HttpPost]
-          public IActionResult DecreaseQuantity(int cartItemId)
-          {
-              var cartItem = _context.ShoppingCart.Find(cartItemId);
-
-              if (cartItem != null && cartItem.Quantity > 1)
-              {
-                  cartItem.Quantity--;
-                  _context.SaveChanges();
-              }
-
-              return RedirectToAction("Index");
-          }*/
-
 
         [HttpPost]
         public ActionResult AddToCart(int productId)
