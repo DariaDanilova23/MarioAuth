@@ -14,7 +14,7 @@
     <h1 class="title">Оформление заказа</h1>
 
     <div class="formContainer">
-        <form class="order-form" action="@Url.Action("Create", "Order")" method="post">
+        <form class="order-form" action="@Url.Action("Create", "Order")" method="post" onsubmit="return validateForm()">
             <div id="inputOrder">
                 <input type="tel" placeholder="Введите номер телефона" id="tel" name="tel" class="tel" />
             </div>
@@ -28,7 +28,7 @@
             <div id="inputOrder">
                 <textarea placeholder="Комментарий к заказу" name="comment" id="comment"></textarea>
             </div>
-            <input class="btn orderBtn" type="submit" />
+            <input class="btn orderBtn" onclick="validateForm()" type="submit" />
         </form>
     </div>
 </div>

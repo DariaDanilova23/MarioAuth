@@ -1,18 +1,19 @@
 function deliveryAdress() {
-    const select = document.getElementById('delivery'); // выбираем элемент select
-    const selectedValue = select.value; // получаем значение выбранного элемента
-    if (selectedValue == "home") { //Если выбрана доставка ндом 
-        var newInput = document.createElement("input");
-        newInput.type = "text";
-        newInput.name = "address";
-        newInput.id = "address";
-        newInput.placeholder = "Введите адрес доставки";
-        
-        select.insertAdjacentElement('afterend', newInput);
-    }
-    else { //Если выбран самовывоз
-        const newInput = document.getElementById('address');
-        if (newInput) {
+    const select = $('#delivery'); 
+    const selectedValue = select.val();
+
+    if (selectedValue == "home") { 
+        var newInput = $("<input>").attr({
+            type: "text",
+            name: "address",
+            id: "address",
+            placeholder: "Введите адрес доставки"
+        });
+
+        select.after(newInput);
+    } else { 
+        const newInput = $('#address');
+        if (newInput.length) {
             newInput.remove();
         }
     }
@@ -53,3 +54,49 @@ window.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+function validateForm() {
+    var tel = $("#tel").val().trim();
+    var delivery = $("#delivery").val();
+    var comment = $("#comment").val().trim();
+    
+    if (tel === "") {
+        markFieldAsError($("#tel"));
+    } else {
+        removeErrorMark($("#tel"));
+    }
+
+    if (delivery === "") {
+        markFieldAsError($("#delivery"));
+    } else {
+        if (delivery=="home") {
+            var address = $("#address").val().trim();
+            if (address === "") {
+                markFieldAsError($("#address"));
+            }
+            else {
+                removeErrorMark($("#address"));
+            }
+        }
+        removeErrorMark($("#delivery"));
+    }
+
+    if (comment === "") {
+        markFieldAsError($("#comment"));
+    } else {
+        removeErrorMark($("#comment"));
+    }
+
+    if (tel === "" || delivery === "" || comment === "") {
+        return false; 
+    }
+
+    return true;
+}
+function markFieldAsError(inputField) {
+    inputField.addClass("error");
+}
+
+function removeErrorMark(inputField) {
+    inputField.removeClass("error");
+}

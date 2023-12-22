@@ -19,6 +19,11 @@ form {
         border: 1.5px solid #91BCBF;
     }
 
+.error {
+    border: 2px solid #ff0000; 
+    background-color: #ffe6e6; 
+}
+
 .orderBtn {
     color: white;
     background-color: #91BCBF;
