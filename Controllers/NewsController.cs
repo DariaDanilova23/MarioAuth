@@ -24,7 +24,7 @@ namespace MarioAuth.Controllers
             int pageSize = 5; // Количество новостей на одной странице
             int pageNumber = page ?? 1; // Номер текущей страницы
 
-            var news = _context.News.ToList(); // Получение всех новостей (замените на ваш запрос данных)
+            var news = _context.News.ToList(); // Получение всех новостей
             if (news == null) return NotFound();
             
             var paginatedNews = news.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
@@ -39,13 +39,5 @@ namespace MarioAuth.Controllers
 
             return View(viewModel);
         }
-        /*
-        public async Task<IActionResult> Index()
-        {
-              return _context.News != null ? 
-                          View(await _context.News.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.News'  is null.");
-        }
-      */
     }
 }

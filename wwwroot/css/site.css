@@ -36,7 +36,7 @@ body {
     margin-bottom: 0 !important;
 }
 
-p {
+p, pre {
     color: #7B7B7B;
     font-family: 'Gothic A1';
 }
@@ -68,6 +68,7 @@ header {
     font-family: 'Poiret One';
     color: #104241;
 }
+
 @media screen and (min-width: 800px) {
     .nav-link {
         font-size: 20px;
@@ -86,12 +87,6 @@ header {
     }
 }
 
-@media screen and (max-width: 576px) {
-    .nav-link {
-        font-size: 20px;
-    }
-}
-
 #text-replacement {
     display: none;
     padding: 0;
@@ -99,6 +94,9 @@ header {
 }
 
 @media screen and (max-width: 576px) {
+    .nav-link {
+        font-size: 20px;
+    }
     #responsiveImage {
         display: none;
     }
@@ -147,7 +145,6 @@ header {
     }
 }
 
-
 .title {
     text-align: center;
     margin-bottom: 10px;
@@ -158,16 +155,19 @@ header {
         font-size: 56px;
     }
 }
+
 @media screen and (min-width: 600px) and (max-width:800px) {
     .title {
         font-size: 48px;
     }
 }
+
 @media screen and (min-width: 400px) and (max-width:600px) {
     .title {
         font-size: 45px;
     }
 }
+
 @media screen and (min-width: 300px) and (max-width:400px) {
     .title {
         font-size: 30px;

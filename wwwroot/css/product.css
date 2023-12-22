@@ -1,10 +1,4 @@
-﻿/*.productShop{
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-    flex-wrap:wrap;
-}*/
-.backBtn {
+﻿.backBtn {
     position: absolute;
     margin-left: 5px;
     margin-top: 20px;

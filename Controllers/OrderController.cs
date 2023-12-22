@@ -97,7 +97,6 @@ namespace MarioAuth.Controllers
         {
             string orderList = "";
             string currentUser = _userManager.GetUserId(User);
-            //.GetUserId(User);
 
             var shoppingList = _context.ShoppingCart.Include(p => p.Product).Where(u => u.UserId==currentUser).ToList();
             foreach (var shopping in shoppingList)

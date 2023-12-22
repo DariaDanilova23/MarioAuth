@@ -24,18 +24,8 @@ namespace MarioAuth.Controllers
         {
             return _context.Catalog != null ?
                           View(await _context.Catalog.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Catalog'  is null.");
+                          Problem("Нет записей в таблице Catalog");
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

@@ -31,9 +31,14 @@
         line-height: 32px;
     }
 
-.categoryDiv{
-    margin-top:5px;
+.sign{
+    height:25%;
 }
+
+.categoryDiv {
+    margin-top: 5px;
+}
+
 .categories {
     display: grid;
     margin: auto;
@@ -46,6 +51,7 @@
     flex-direction: column;
     cursor: pointer;
 }
+
     .itemCategory img {
         height: 80%;
         object-fit: cover;

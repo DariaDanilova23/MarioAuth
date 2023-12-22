@@ -1,7 +1,4 @@
-﻿body {
-}
-
-.newsBlock {
+﻿.newsBlock {
     width: 95%;
     margin: auto;
 }
@@ -9,8 +6,6 @@
 .divPhoto {
     height: 300px;
 }
-
-
 
 .newsItem {
     display: flex;
@@ -89,7 +84,7 @@
         width: 40px;
     }
 }
-/*-------------*/
+/*Код для оформления пагинации */
 .pagination-container {
     margin-top: 20px;
     text-align: center;

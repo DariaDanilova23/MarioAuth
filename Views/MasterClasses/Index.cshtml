@@ -18,18 +18,18 @@
         </div>
     </div>
     <div id="pageSection">
-    <h1 class="title">Мастер-Классы</h1>
-    @foreach (var item in Model)
-    {
-        <div class="masterFlex">
-            <div class="masterData">
-                <h1> @Html.DisplayFor(modelItem => item.Date)</h1>
-            </div>
-            <div class="masterInfo">
-                <h1>@Html.DisplayFor(modelItem => item.Title)</h1>
-                <p>@Html.DisplayFor(modelItem => item.Description)</p>
-            </div>
+        <h1 class="title">Мастер-Классы</h1>
+        <div class="masterGrid">
+            @foreach (var item in Model)
+            {
+                    <div class="masterData">
+                        <h1> @Html.DisplayFor(modelItem => item.Date)</h1>
+                    </div>
+                    <div class="masterInfo">
+                        <h1>@Html.DisplayFor(modelItem => item.Title)</h1>
+                        <p><pre>@Html.DisplayFor(modelItem => item.Description)</pre></p>
+                    </div>
+            }
         </div>
-    }
     </div>
 </div>

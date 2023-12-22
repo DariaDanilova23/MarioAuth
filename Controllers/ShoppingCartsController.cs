@@ -48,32 +48,7 @@ namespace MarioAuth.Controllers
             return Json(new { totalCost = TotalPrice() });
         }
 
-            //------------------Старое------------//
-            /*
-            [HttpPost]
-            public IActionResult ChangeQuantity(int cartItemId, string action)
-            {
-                var cartItem = _context.ShoppingCart.Find(cartItemId);
-
-                if (cartItem != null)
-                {
-                    if (action=="add")
-                    {
-                        cartItem.Quantity++;
-                    }
-
-                    if (action=="remove" && cartItem.Quantity > 1)
-                    {
-                        cartItem.Quantity--;
-
-                    }
-                    _context.SaveChanges();
-                }
-                return RedirectToAction("Index");
-            }
-            */
-
-            public decimal TotalPrice()
+        public decimal TotalPrice()
         {
             string currentUser = _userManager.GetUserId(User);
             List<ShoppingCart> itrmsInCart = _context.ShoppingCart
@@ -89,7 +64,6 @@ namespace MarioAuth.Controllers
         {
             string currentUser = _userManager.GetUserId(User);
             Create(productId, currentUser);
-            //return Redirect("/Home/Index");
             return Json(new { result = "Success" });
         }
 
@@ -104,8 +78,6 @@ namespace MarioAuth.Controllers
             };
 
             _context.ShoppingCart.Add(newCartItem);
-
-            // Сохраняем изменения в базу данных
             _context.SaveChanges();
             return true;
         }
@@ -124,9 +96,8 @@ namespace MarioAuth.Controllers
             }
             if (_context.ShoppingCart == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.ShoppingCart'  is null.");
+                return Problem("Нет записей в таблице ShoppingCart.");
             }
-            //var shoppingCart = await _context.ShoppingCart.FindAsync(id);
             if (shoppingCart != null)
             {
                 _context.ShoppingCart.Remove(shoppingCart);

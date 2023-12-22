@@ -24,7 +24,7 @@ namespace MarioAuth.Controllers
         {
             return _context.MasterClass != null ?
                         View(await _context.MasterClass.ToListAsync()) :
-                        Problem("Entity set 'ApplicationDbContext.MasterClass'  is null.");
+                        Problem("Нет записей в таблице MasterClass'.");
         }
     }
 }

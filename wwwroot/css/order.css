@@ -10,8 +10,9 @@ form {
 
 #inputOrder {
     margin-bottom: 10px;
-    width:100%
+    width: 100%
 }
+
     #inputOrder > * {
         width: 100%;
         border-radius: 5px;

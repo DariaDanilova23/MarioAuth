@@ -1,7 +1,7 @@
 function deliveryAdress() {
     const select = document.getElementById('delivery'); // выбираем элемент select
     const selectedValue = select.value; // получаем значение выбранного элемента
-    if (selectedValue == "home") {
+    if (selectedValue == "home") { //Если выбрана доставка ндом 
         var newInput = document.createElement("input");
         newInput.type = "text";
         newInput.name = "address";
@@ -10,7 +10,7 @@ function deliveryAdress() {
         
         select.insertAdjacentElement('afterend', newInput);
     }
-    else {
+    else { //Если выбран самовывоз
         const newInput = document.getElementById('address');
         if (newInput) {
             newInput.remove();
@@ -53,34 +53,3 @@ window.addEventListener("DOMContentLoaded", function () {
     });
 
 });
-/*
-$('.order-form').submit(function (event) {
-    event.preventDefault();
-    var addresShop;
-    console.log($('#comment').val());
-    if ($('#delivery').val() == 'shop') {
-        addresShop = "��������� �� �������� �� ������ ��������";
-    }
-    else {
-        addresShop = $('#address').val();
-    }
-    var formData = {
-        phone: $('#tel').val(),
-        address: addresShop,
-        comment: $('#comment').val()
-    };
-   
-// ��������� AJAX-������ �� ������
-$.ajax({
-    url: "/Order/Create",
-    type: "POST",
-    data: formData,
-    success: function (result) {
-        console.log("�����");
-    },
-    error: function (error) {
-
-        console.error(error);
-    }
-});
-});*/

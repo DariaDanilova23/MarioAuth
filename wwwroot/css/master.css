@@ -1,14 +1,4 @@
-﻿body {
-}
-
-.masterFlex {
-    display: inline-grid;
-    grid-template-columns: 45% 45%;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-.circle {
+﻿.circle {
     position: absolute;
     background: #E2EEEE;
 }
@@ -19,12 +9,30 @@
     margin-right: 20%;
 }
 
+.masterGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: auto;
+    width: 80%;
+    justify-items: center;
+    margin-top: 10px;
+    grid-column-gap: 2px;
+}
+
+.masterData {
+    content: "";
+    width: 100%;
+    display: block;
+    border-right: 1px solid #104241;
+    height: 100%;
+}
+
 @media screen and (min-width: 800px) {
-    .masterFlex h1 {
+    .masterGrid h1 {
         font-size: 27px;
     }
 
-    .masterFlex p {
+    .masterGrid p {
         font-size: 16px;
         line-height: 18px;
     }
@@ -43,11 +51,11 @@
 }
 
 @media screen and (min-width: 600px) and (max-width:800px) {
-    .masterFlex h1 {
+    .masterGrid h1 {
         font-size: 22px;
     }
 
-    .masterFlex p {
+    .masterGrid p {
         font-size: 12px;
         line-height: 14px;
     }
@@ -66,11 +74,11 @@
 }
 
 @media screen and (min-width: 300px) and (max-width:600px) {
-    .masterFlex h1 {
+    .masterGrid h1 {
         font-size: 16px;
     }
 
-    .masterFlex p {
+    .masterGrid p {
         font-size: 10px;
         line-height: 12px;
     }
@@ -89,11 +97,11 @@
 }
 
 @media screen and (max-width: 300px) {
-    .masterFlex h1 {
+    .masterGrid h1 {
         font-size: 10px;
     }
 
-    .masterFlex p {
+    .masterGrid p {
         font-size: 6px;
         line-height: 8px;
     }
