@@ -30,8 +30,8 @@ namespace MarioAuth.Controllers
         public async Task<IActionResult> Index()
         {
             string currentUser = _userManager.GetUserId(User);
-            var applicationDbContext = _context.ShoppingCart.Include(p => p.Product).Where(u => u.UserId==currentUser);
-            ViewBag.TotalCost = TotalPrice();
+            var applicationDbContext = _context.ShoppingCart.Include(p => p.Product).Where(u => u.UserId==currentUser); //Получение товаров в корзине
+            ViewBag.TotalCost = TotalPrice(); //Получение итоговой цены корзины
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -51,33 +51,32 @@ namespace MarioAuth.Controllers
         public decimal TotalPrice()
         {
             string currentUser = _userManager.GetUserId(User);
-            List<ShoppingCart> itrmsInCart = _context.ShoppingCart
+            List<ShoppingCart> itrmsInCart = _context.ShoppingCart //Получение товаров в корзине у текущего пользователя
            .Include(item => item.Product)
            .Where(item => item.UserId == currentUser)
            .ToList();
-            decimal totalCost = itrmsInCart.Sum(item => item.Quantity * Convert.ToDecimal(item.Product.Price));
+            decimal totalCost = itrmsInCart.Sum(item => item.Quantity * Convert.ToDecimal(item.Product.Price)); //Подсчет итоговой цены
             return totalCost;
         }
 
         [HttpPost]
         public ActionResult AddToCart(int productId)
         {
-            string currentUser = _userManager.GetUserId(User);
+            string currentUser = _userManager.GetUserId(User); //Получение текущего пользователя
             Create(productId, currentUser);
             return Json(new { result = "Success" });
         }
 
         public bool Create(int productId, string userId)
         {
-            var newCartItem = new ShoppingCart
+            var newCartItem = new ShoppingCart //Добавление товара в корзину
             {
                 UserId = userId,
                 Quantity = 1,
                 ProductId=productId,
                 DateCreated= DateTime.Now
             };
-
-            _context.ShoppingCart.Add(newCartItem);
+            _context.ShoppingCart.Add(newCartItem); //Сохранение данных
             _context.SaveChanges();
             return true;
         }

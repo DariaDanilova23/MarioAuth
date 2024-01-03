@@ -56,19 +56,19 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 function validateForm() {
-    var tel = $("#tel").val().trim();
-    var delivery = $("#delivery").val();
-    var comment = $("#comment").val().trim();
+    var tel = $("#tel").val().trim(); //Получение данных из поля ввода телефона
+    var delivery = $("#delivery").val();//Получение данных из поля ввода адреса доставки
+    var comment = $("#comment").val().trim(); //Получение данных из поля ввода комментария к заказу
     
-    if (tel === "") {
+    if (tel === "") { //Обработчик пустого поля ввода телефона
         markFieldAsError($("#tel"));
     } else {
         removeErrorMark($("#tel"));
     }
 
-    if (delivery === "") {
+    if (delivery === "") { //Обработчик пустого поля ввода телефона
         markFieldAsError($("#delivery"));
-    } else {
+    } else { //Если поле не пустое получение адресса доставки
         if (delivery=="home") {
             var address = $("#address").val().trim();
             if (address === "") {
@@ -81,13 +81,7 @@ function validateForm() {
         removeErrorMark($("#delivery"));
     }
 
-    if (comment === "") {
-        markFieldAsError($("#comment"));
-    } else {
-        removeErrorMark($("#comment"));
-    }
-
-    if (tel === "" || delivery === "" || comment === "") {
+    if (tel === "" || delivery === "") {
         return false; 
     }
 

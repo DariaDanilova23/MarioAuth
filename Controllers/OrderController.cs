@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using Microsoft.EntityFrameworkCore;
 using System.Net.Http;
+using System.Text;
 
 namespace MarioAuth.Controllers
 {
@@ -56,56 +57,52 @@ namespace MarioAuth.Controllers
         {
             try
             {
-                string addresShop;
-                if (delivery == "shop")
+                string addresShop; 
+                if (delivery == "shop") //Если из списка выбран самовывоз добавить соответствующую запись в бд
                 {
                     addresShop = "Самовывоз из магазина на Тараса Шевченко";
                 }
-                else
+                else //Если доставка добавит введенный адрес
                 {
                     addresShop = address;
                 }
 
                 string currentUserEmail = _userManager.GetUserId(User);
-                var newOrder = new Order
+                var newOrder = new Order //Создание записи о заказе в бд
                 {
                     UserId = currentUserEmail,
                     Phone = tel,
-                    OrderList =getOrderList(),
+                    OrderList = getOrderList(), //Вызов метод для получения списка товаров в корзине
                     DeliveryAddress =addresShop,
                     Comment = comment
                 };
 
-                _context.Order.Add(newOrder);
+                _context.Order.Add(newOrder); //Добавление записи в бд
 
 
                 _context.SaveChanges();
-                ClearCart();
+                ClearCart(); //Метод очистки корзины
 
                 return RedirectToAction("Confirmation");
             }
-            catch (Exception ex)
+            catch (Exception ex) //Обработчик исключения 
             {
-
                 TempData["ErrorMessage"] = "Произошла ошибка при создании заказа!";
                 return RedirectToAction("Index");
-
             }
         }
 
         public string getOrderList()
         {
-            string orderList = "";
             string currentUser = _userManager.GetUserId(User);
-
-            var shoppingList = _context.ShoppingCart.Include(p => p.Product).Where(u => u.UserId==currentUser).ToList();
+            StringBuilder sb = new StringBuilder();
+            var shoppingList = _context.ShoppingCart.Include(p => p.Product).Where(u => u.UserId==currentUser).ToList(); //Получение списка товаров в корзине 
             foreach (var shopping in shoppingList)
             {
-                orderList += shopping.Product.Name+"-"+shopping.Quantity+" шт.\n";
-
+                sb.Append($"{shopping.Product.Name} - {shopping.Quantity} шт.\n");//Создание строки с товарами и их количеством
             }
 
-            return orderList;
+            return sb.ToString();
         }
     }
 }
