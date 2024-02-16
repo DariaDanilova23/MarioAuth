@@ -21,7 +21,15 @@
     border-radius: 20px;
     object-fit: cover;
     padding: 10px;
+    /**/
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    /**/
 }
+
+    .newsIMG:hover {
+        opacity: 0.5; 
+    }
 
 .newsTXT {
     max-width: 90%;
