@@ -1,18 +1,6 @@
 ﻿.circle {
     position: absolute;
     background: #E2EEEE;
-    animation: fadeAnimation 3s ease-in-out;
-}
-
-@keyframes fadeAnimation {
-    
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0.2;
-    }
 }
 
 .appointment {

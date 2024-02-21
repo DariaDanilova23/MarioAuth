@@ -179,18 +179,4 @@
         font-size: 10px;
         font-size: 8px;
     }
-    .productInfo {
-    }
-}
-
-@keyframes myAnimation {
-    0% {
-        background-color: #91bcbf;
-    }
-    50% {
-        background-color: #bf919e;
-    }
-    100% {
-        background-color: #52366e;
-    }
 }
